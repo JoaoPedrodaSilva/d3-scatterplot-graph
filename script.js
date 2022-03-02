@@ -53,8 +53,8 @@ function main(dataSet) {
         .attr('data-yvalue', d => new Date(d.Seconds * 1000))
         .attr('fill', d => d.Doping !== '' ? 'red' : 'blue')
         .on('mouseover', (_, d) => {
-          tooltip.style.left = xScale(d.Year) + 20 + 'px'
-          tooltip.style.top = yScale(new Date(d.Seconds * 1000)) + 20 + 'px'
+          tooltip.style.left = xScale(d.Year) + 400 + 'px'
+          tooltip.style.top = yScale(new Date(d.Seconds * 1000)) + -100 + 'px'
           tooltip.setAttribute('data-year', d.Year)
           tooltip.classList.add('visible')
           tooltip.innerHTML = (`
