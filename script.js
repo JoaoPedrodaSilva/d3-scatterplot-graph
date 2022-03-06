@@ -8,8 +8,8 @@ req.send()
 
 function main(dataSet) {
   const tooltip = document.querySelector('#tooltip')
-  const w = 800
-  const h = 600
+  const w = 700
+  const h = 550
   const pad = 40
 
   const xScale = d3.scaleLinear()
@@ -52,9 +52,9 @@ function main(dataSet) {
         .attr('data-xvalue', d => d.Year)
         .attr('data-yvalue', d => new Date(d.Seconds * 1000))
         .attr('fill', d => d.Doping !== '' ? 'red' : 'blue')
-        .on('mouseover', (_, d) => {
-          tooltip.style.left = xScale(d.Year) + 400 + 'px'
-          tooltip.style.top = yScale(new Date(d.Seconds * 1000)) + -30 + 'px'
+        .on('mouseover', (e, d) => {
+          tooltip.style.left = e.pageX + 'px'
+          tooltip.style.top = e.pageY + 'px'
           tooltip.setAttribute('data-year', d.Year)
           tooltip.classList.add('visible')
           tooltip.innerHTML = (`
@@ -63,9 +63,7 @@ function main(dataSet) {
             ${d.Doping === '' ? 'No doping allegation' : d.Doping}
           `)          
         })
-        .on('mouseout', () => {
-          tooltip.classList.remove('visible')
-        })
+        .on('mouseout', () => tooltip.classList.remove('visible'))
 }
 
  

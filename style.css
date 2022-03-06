@@ -1,58 +1,62 @@
 body {  
-    background-color: lightyellow;
-  }
-  
-  #container {  
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  svg {
     background-color: white;
-    border: solid 1px;  
   }
   
-  #legend {
-    position: absolute;
-    top: 120px;
-    right: 600px;
-  }
-  
-  .inner-legend {
-    display: flex;
-    flex-direction: row-reverse;
-    align-items: center;
-    justify-content: left;
-  }
-  
-  p {padding-left: 5px;}
-  
-  .legend-label {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-  }
-  
-  #doping {  
-    background-color: red;  
-  }
-  
-  #no-doping {
-    background-color: blue;
-  }
-  
-  #tooltip {
-    position: absolute;
-    display: none;
-    background-color: lightgrey;
-    padding: 10px;
-    box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.4);
-    border-radius: 5%;
-  }
-  
-  #tooltip.visible {
-    display: flex;
-  }
+#outer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#inner-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+svg {
+  position: relative;
+  background-color: white;
+}
+
+circle:hover{
+  stroke: black;
+}
+
+.inner-legend {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: left;
+}
+
+p {padding-left: 5px;}
+
+.legend-label {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+#doping {  
+  background-color: red;  
+}
+
+#no-doping {
+  background-color: blue;
+}
+
+#tooltip {
+  position: absolute;
+  display: none;
+  background-color: lightgrey;
+  padding: 10px;
+  box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.4);
+  border-radius: 5%;
+}
+
+#tooltip.visible {
+  display: flex;
+}
