@@ -8,7 +8,7 @@ req.send()
 
 function main(dataSet) {
   const tooltip = document.querySelector('#tooltip')
-  const w = 700
+  const w = 600
   const h = 550
   const pad = 40
 
