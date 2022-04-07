@@ -7,10 +7,10 @@ req.onload = () => {
 req.send()
 
 function main(dataSet) {
-  const tooltip = document.querySelector('#tooltip')
+  const tooltip = document.querySelector('.tooltip')
   const w = 600
-  const h = 550
-  const pad = 40
+  const h = 520
+  const pad = 60
 
   const xScale = d3.scaleLinear()
                    .domain([d3.min(dataSet, d => d.Year - 1),
@@ -39,8 +39,9 @@ function main(dataSet) {
                   .call(yAxis)  
   
   d3.select('svg')
-    .attr('width', w)
-    .attr('height', h)
+  .attr("preserveAspectRatio", "xMinYMin meet")
+  .attr("viewBox", `0 0 ${w} ${h}`)
+  .classed("svg-content", true)
       .selectAll('circle')
       .data(dataSet)
       .enter()
@@ -53,8 +54,8 @@ function main(dataSet) {
         .attr('data-yvalue', d => new Date(d.Seconds * 1000))
         .attr('fill', d => d.Doping !== '' ? 'red' : 'blue')
         .on('mouseover', (e, d) => {
-          tooltip.style.left = e.pageX + 'px'
-          tooltip.style.top = e.pageY + 'px'
+          tooltip.style.left = e.pageX + 10 + 'px'
+          tooltip.style.top = e.pageY - 50 + 'px'
           tooltip.setAttribute('data-year', d.Year)
           tooltip.classList.add('visible')
           tooltip.innerHTML = (`
@@ -64,7 +65,34 @@ function main(dataSet) {
           `)          
         })
         .on('mouseout', () => tooltip.classList.remove('visible'))
+
+        d3.select('svg')
+        .append("text")
+        .attr("x", w / 2)
+        .attr("y", pad - 20)
+        .attr("text-anchor", "middle")
+        .style("font-size", "24px")
+        .text("Doping in Professional Bicycle Racing");
+        
+        d3.select('svg')
+        .append("text")
+        .attr("transform", "translate(" + (w / 2) + " ," + (h - 15) + ")")
+        .style("text-anchor", "middle")
+        .style("font-size", "16px")
+        .text("Year");
+        
+        d3.select('svg')
+        .append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("x", -(h / 2))
+        .attr("y", 15)
+        .style("text-anchor", "middle")
+        .style("font-size", "16px")
+        .text("Time");
+
 }
+
+
 
  
 

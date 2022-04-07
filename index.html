@@ -10,25 +10,17 @@
     <title>D3 Scatterplot Graph</title>
 </head>
 <body>
-    <div id='outer-container'>
-        <h1 id='title'>
-          Doping in Professional Bicycle Racing
-        </h1>
-        <div id='inner-container'>
-          <svg id='canvas'></svg>
-          <div id='legend'>
-            <div class='inner-legend'>
-              <p>Doping allegations</p>
-              <div id='doping' class='legend-label'></div>
-            </div>
-            <div class='inner-legend'>
-              <p>No doping allegations</p>
-              <div id='no-doping' class='legend-label'></div>
-            </div>
-          </div>
-        </div>
-        <div id='tooltip'>
-        </div>
+    <div class='iframe-container'>
+      <div class="responsive-div">
+        <svg class='d3-content'></svg>          
+        <div class='tooltip'></div>
       </div>
+      <div class='responsive-legend'>
+        <p>Doping allegations</p>
+        <div class='doping legend-label'></div>
+        <p>No doping allegations</p>
+        <div class='no-doping legend-label'></div>
+      </div>      
+    </div>
 </body>
 </html>
