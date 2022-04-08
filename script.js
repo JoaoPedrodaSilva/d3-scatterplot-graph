@@ -7,11 +7,18 @@ req.onload = () => {
 req.send()
 
 function main(dataSet) {
-  const tooltip = document.querySelector('.tooltip')
+
+  //constants  
   const w = 600
   const h = 520
   const pad = 60
+  const tooltip = document.querySelector('.tooltip')
+  const iframeContainer = document.querySelector('.iframe-container')
+  console.log(iframeContainer)
+  const tooltipLeft = window.getComputedStyle(iframeContainer).width.replace('px', '')
+  const tooltipBottom = window.getComputedStyle(iframeContainer).height.replace('px', '')
 
+  //scales
   const xScale = d3.scaleLinear()
                    .domain([d3.min(dataSet, d => d.Year - 1),
                             d3.max(dataSet, d => d.Year) + 1] )
@@ -22,6 +29,7 @@ function main(dataSet) {
                             d3.max(dataSet, d => new Date(d.Seconds * 1000))])
                    .range([pad, h - pad])
   
+  //axes
   const xAxis = d3.axisBottom(xScale)
                   .tickFormat(d3.format('d'))
                 d3.select('svg')
@@ -38,6 +46,16 @@ function main(dataSet) {
                   .attr('transform', 'translate('+ (pad) + ', 0)')
                   .call(yAxis)  
   
+  //title
+  d3.select('svg')
+  .append("text")
+  .attr("x", w / 2)
+  .attr("y", pad - 30)
+  .attr("text-anchor", "middle")
+  .style("font-size", "24px")
+  .text("Doping in Professional Bicycle Racing");
+
+  //circles and tooltip
   d3.select('svg')
   .attr("preserveAspectRatio", "xMinYMin meet")
   .attr("viewBox", `0 0 ${w} ${h}`)
@@ -54,8 +72,8 @@ function main(dataSet) {
         .attr('data-yvalue', d => new Date(d.Seconds * 1000))
         .attr('fill', d => d.Doping !== '' ? 'red' : 'blue')
         .on('mouseover', (e, d) => {
-          tooltip.style.left = e.pageX + 10 + 'px'
-          tooltip.style.top = e.pageY - 50 + 'px'
+          tooltip.style.left = e.clientX - (tooltipLeft * 0.20) + 'px'
+          tooltip.style.top = e.clientY + (tooltipBottom * 0.05) + 'px'
           tooltip.setAttribute('data-year', d.Year)
           tooltip.classList.add('visible')
           tooltip.innerHTML = (`
@@ -66,29 +84,23 @@ function main(dataSet) {
         })
         .on('mouseout', () => tooltip.classList.remove('visible'))
 
-        d3.select('svg')
-        .append("text")
-        .attr("x", w / 2)
-        .attr("y", pad - 20)
-        .attr("text-anchor", "middle")
-        .style("font-size", "24px")
-        .text("Doping in Professional Bicycle Racing");
         
-        d3.select('svg')
-        .append("text")
-        .attr("transform", "translate(" + (w / 2) + " ," + (h - 15) + ")")
-        .style("text-anchor", "middle")
-        .style("font-size", "16px")
-        .text("Year");
-        
-        d3.select('svg')
-        .append("text")
-        .attr("transform", "rotate(-90)")
-        .attr("x", -(h / 2))
-        .attr("y", 15)
-        .style("text-anchor", "middle")
-        .style("font-size", "16px")
-        .text("Time");
+  //labels   
+  d3.select('svg')
+  .append("text")
+  .attr("transform", "translate(" + (w / 2) + " ," + (h - 15) + ")")
+  .style("text-anchor", "middle")
+  .style("font-size", "16px")
+  .text("Year");
+  
+  d3.select('svg')
+  .append("text")
+  .attr("transform", "rotate(-90)")
+  .attr("x", -(h / 2))
+  .attr("y", 15)
+  .style("text-anchor", "middle")
+  .style("font-size", "16px")
+  .text("Time");
 
 }
 
