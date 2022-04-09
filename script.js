@@ -36,6 +36,7 @@ function main(dataSet) {
                   .append('g')
                   .attr('id', 'x-axis')
                   .attr('transform', 'translate(0, ' + (h - pad) + ')')
+                  .style("font-size", "12px")
                   .call(xAxis)
   
   const yAxis = d3.axisLeft(yScale)
@@ -44,6 +45,7 @@ function main(dataSet) {
                   .append('g')
                   .attr('id', 'y-axis')
                   .attr('transform', 'translate('+ (pad) + ', 0)')
+                  .style("font-size", "12px")
                   .call(yAxis)  
   
   //title
