@@ -1,5 +1,5 @@
 html {
-  font-size: 10px;
+    font-size: 10px;
 }
 
 body {
@@ -10,104 +10,79 @@ body {
 }
 
 .iframe-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;  
-  width: 600px;
-  height: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    max-width: 475px;
+    max-height: 475px;
 }
 
-.responsive-div {    
-  display: inline-block;
-  position: relative;
-  width: 100%;
-  padding-bottom: 100%;
-  vertical-align: top;
-  overflow: hidden;
+.responsive-div {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%;
+    vertical-align: top;
+    overflow: hidden;
 }
-  .d3-content {
+
+.d3-content {
     display: inline-block;
     position: absolute;
     top: 0;
-    left: 0; 
-  }
-    circle:hover{
-      stroke: black;
-    }
+    left: 0;
+}
 
-.responsive-legend{
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  margin-top: -14%;
-} 
-  p {
-    padding-left: 10%;
-    margin-right: 2%;
+circle:hover {
+    stroke: black;
+}
+
+.responsive-legend {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: -14%;
+}
+
+p {
+    padding-left: 13%;
+    margin-right: 0;
     font-size: 1.5rem;
-  }
-  .legend-label {    
-    width: 25%;
-    height: 50%;
+}
+
+.legend-label {
+    width: 10%;
+    height: 20%;
     border-radius: 50%;
-  }
-    .doping {  
-      background-color: red;  
-    }
-    .no-doping {
-      background-color: blue;
-    }
+}
+
+.doping {
+    background-color: red;
+}
+
+.no-doping {
+    background-color: blue;
+}
 
 .tooltip {
-  position: fixed;
-  display: none;
-  background-color: lightgrey;
-  font-size: 1.8rem;
-  padding: 0.5%;
-  box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.4);
-  border-radius: 5%;
+    position: fixed;
+    display: none;
+    background-color: lightgrey;
+    font-size: 1.8rem;
+    padding: 0.5%;
+    box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.4);
+    border-radius: 5%;
 }
-  .tooltip.visible {
+
+.tooltip.visible {
     display: flex;
-  }
-
-@media (max-width: 1024px) {
-  .iframe-container {
-      width: 560px;
-      height: 560px;
-  }
-
-  html {
-      font-size: 7px;
-  }
-}
-  
-@media (max-width: 768px) {
-  .iframe-container {
-      width: 420px;
-      height: 420px;
-  }
 }
 
-@media (max-width: 576px) {
-  .iframe-container {
-      width: 350px;
-      height: 350px;
-  }
-
-  html {
-      font-size: 6px;
-  }
-}
-
-@media (max-width: 425px) {
-  .iframe-container {
-      width: 240px;
-      height: 240px;
-  }
-
-  html {
-    font-size: 4px;
-  }
+@media (max-width: 640px) {
+    html {
+        font-size: 5px;
+    }
 }
