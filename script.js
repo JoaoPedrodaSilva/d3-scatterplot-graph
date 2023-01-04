@@ -10,7 +10,7 @@ function main(dataSet) {
 
     //constants  
     const w = 600
-    const h = 520
+    const h = 570
     const pad = 65
     const tooltip = document.querySelector('.tooltip')
     const iframeContainer = document.querySelector('.iframe-container')
@@ -86,13 +86,7 @@ function main(dataSet) {
         .on('mouseout', () => tooltip.classList.remove('visible'))
 
 
-    //labels   
-    d3.select('svg')
-        .append("text")
-        .attr("transform", "translate(" + (w / 2) + " ," + (h - 25) + ")")
-        .style("text-anchor", "middle")
-        .style("font-size", "16px")
-        .text("Year");
+    //labels
 
     d3.select('svg')
         .append("text")
